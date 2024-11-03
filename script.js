@@ -2,6 +2,7 @@ const add_btn = document.getElementById("btn");
 const listContainer = document.getElementById("listContainer");
 let editMode = null;
 
+// ! add Item 
 add_btn.addEventListener("click", () => {
   const inputField = document.getElementById("itemInput");
   const list = document.createElement("li");
@@ -11,6 +12,7 @@ add_btn.addEventListener("click", () => {
   if (editMode !== null) {
     // Edit existing item
     editMode.querySelector(".list-text").innerText = itemText;
+    inputField.value = "";
     editMode = null;
   } else {
     list.innerHTML = `
@@ -30,10 +32,12 @@ add_btn.addEventListener("click", () => {
   }
 });
 
+//! delete Item 
 function deleteItem(element) {
   element.parentElement.parentElement.remove();
 }
 
+//! edit Item
 function editItem(element) {
   const listItem = element.closest("li");
   const text = listItem.querySelector(".list-text").innerText;
